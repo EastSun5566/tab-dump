@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "TabDump",
+  "version": "0.0.1",
+  "description": "Saving all open tabs to read later",
+  "permissions": [
+    "tabs",
+    "storage",
+    "unlimitedStorage",
+    "favicon"
+  ],
+  "action": {
+    "default_title": "Saving all open tabs to read later"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

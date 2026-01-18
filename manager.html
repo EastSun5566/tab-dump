@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TabDump</title>
+    <style>
+      /* Classless.css v1.1 - https://github.com/emareg/classlesscss */
+
+      :root, html[data-theme='light'] {
+        --rem: 12pt;
+        --width: 50rem;
+        --navpos: absolute;
+        --font-p: 1em/1.7 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+        --font-h: .9em/1.5 'Open Sans', 'DejaVu Sans', FreeSans, Helvetica, sans-serif;
+        --font-c: .9em/1.4 'DejaVu Sans Mono', monospace;
+        --border: 1px solid var(--cmed);
+        --ornament: "‹‹‹ ›››";
+        --cfg:   #433;    --cbg:    #fff;
+        --cdark: #888;    --clight: #f5f6f7;
+        --cmed:  #d1d1d1;
+        --clink: #07c;
+        --cemph: #088;    --cemphbg: #0881;
+      }
+
+      /* Dark mode support */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --cfg:   #cecece; --cbg:    #1a1a1a;
+          --cdark: #999;    --clight: #2a2a2a;
+          --cmed:  #444;
+          --clink: #4a9eff;
+          --cemph: #4dd4ac; --cemphbg: #4dd4ac22;
+        }
+      }
+
+      * { box-sizing: border-box; border-spacing: 0; margin: 0; padding: 0; }
+      header, footer, figure, video, details, blockquote,
+      ul, ol, dl, fieldset, pre, pre > code {
+        display: block;
+        margin: .5rem 0 1rem;
+        width: 100%;
+        overflow: auto hidden;
+        text-align: left;
+      }
+      video, summary, input, select { outline: none; }
+
+      a, button, select, summary { color: var(--clink); cursor: pointer; }
+
+      html { font-size: var(--rem); background: var(--cbg); }
+      body {
+        position: relative;
+        margin: auto;
+        max-width: var(--width);
+        font: var(--font-p);
+        color: var(--cfg);
+        padding: 3.0rem .6rem 0;
+        overflow-x: hidden;
+      }
+      body > footer { margin: 10rem 0 0; font-size: 90%; }
+      p { margin: .6em 0; }
+
+      a[href]{ text-decoration: underline solid 1.5px var(--cmed); text-underline-position: under; }
+      a[href^="#"] {text-decoration: none; }
+      a:hover, button:not([disabled]):hover, summary:hover, select:hover {
+        filter: brightness(92%); color: var(--cemph); border-color: var(--cemph);
+      }
+
+      ul, ol, dl { margin: 1rem 0; padding: 0 0 0 2em; }
+      li:not(:last-child), dd:not(:last-child) { margin-bottom: .5rem; }
+      dt { font-weight: bold; }
+
+      h1, h2, h3, h4, h5 { margin: 1.5em 0 .5rem; font: var(--font-h); line-height: 1.2em; clear: both; }
+      h1+h2, h2+h3, h3+h4, h4+h5 { margin-top: .5em; padding-top: 0; }
+      h1 { font-size: 2.2em; font-weight: 300; }
+      h2 { font-size: 2.0em; font-weight: 300; font-variant: small-caps; }
+      h3 { font-size: 1.5em; font-weight: 400; }
+      h4 { font-size: 1.1em; font-weight: 700; }
+      h5 { font-size: 1.2em; font-weight: 400; color: var(--cfg); }
+      h6 { font-size: 1.0em; font-weight: 700; font-style: italic; display: inline; }
+      h6 + p { display: inline; }
+
+      img, svg { max-width: 100%; vertical-align: text-top; object-fit: cover; }
+      
+      code, kbd, samp {
+        padding: .2em;
+        font: var(--font-c);
+        background: var(--clight);
+        border-radius: 4px;
+      }
+      kbd { border: 1px solid var(--cmed); }
+
+      blockquote { border-left: .4rem solid var(--cmed); padding: 0 0 0 1rem; }
+      time{ color: var(--cdark); }
+      hr { border: 0; border-top: .1rem solid var(--cmed); }
+      ::selection, mark { background: var(--clink); color: var(--cbg); }
+
+      textarea, input:not([type=range]), button, select {
+        font: var(--font-h);
+        border-radius: 4px;
+        border: 1.5px solid var(--cmed);
+        padding: .4em .8em;
+        color: var(--cfg);
+        background-color: var(--clight);
+      }
+      button, select {
+        font-weight: bold;
+        margin: .5em;
+        border: 1.5px solid var(--clink);
+        color: var(--clink);
+      }
+      button { padding: .4em 1em; font-size: 85%; letter-spacing: .1em; }
+      button[disabled] { color: var(--cdark); border-color: var(--cmed); }
+
+      /* Custom styles */
+      details {
+        background: var(--cbg);
+        padding: 1em;
+        margin-bottom: 1em;
+        border-radius: 8px;
+        border: 1px solid var(--cmed);
+      }
+      
+      summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: var(--cdark);
+        user-select: none;
+      }
+      
+      details ul {
+        list-style: none;
+        padding: 0;
+        margin: .5em 0 0 0;
+      }
+      
+      details li {
+        display: flex;
+        align-items: center;
+        padding: .5em 0;
+        margin: 0;
+      }
+      
+      details li:hover {
+        background-color: var(--clight);
+      }
+      
+      details img {
+        width: 16px;
+        height: 16px;
+        margin-right: .5em;
+        flex-shrink: 0;
+      }
+      
+      details a {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-decoration: none;
+        color: var(--cfg);
+      }
+      
+      details a:hover {
+        color: var(--clink);
+      }
+      
+      details button {
+        margin: 0 0 0 .5em;
+        padding: .2em .5em;
+        font-size: .8em;
+      }
+      
+      details li button {
+        margin: 0 0 0 .5em;
+        padding: 0;
+        border: none;
+        background: none;
+        color: var(--cmed);
+        cursor: pointer;
+        font-size: 1.2em;
+        line-height: 1;
+      }
+      
+      details li button:hover {
+        color: #d93025;
+      }
+      
+      nav {
+        margin-bottom: 1em;
+      }
+      
+      nav button {
+        margin: 0 .5em 0 0;
+      }
+      
+      input[type="file"] {
+        display: none;
+      }
+      
+      p.empty {
+        text-align: center;
+        color: var(--cdark);
+        padding: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dumped Tabs</h1>
+    
+    <nav aria-label="Tab management actions">
+      <button id="exportBtn" type="button" aria-label="Export all tabs as JSON">Export</button>
+      <button id="importBtn" type="button" aria-label="Import tabs from JSON file">Import</button>
+      <input type="file" id="fileInput" accept=".json" aria-label="Select JSON file to import">
+    </nav>
+    
+    <main id="container" role="main" aria-live="polite"></main>
+    
+    <script src="manager.js"></script>
+  </body>
+</html>
