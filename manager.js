@@ -17,9 +17,20 @@ async function render() {
     const summary = document.createElement('summary');
     summary.innerHTML = `
       ${group.date} (${group.tabs.length} tabs)
-      <button type="button" data-id="${group.id}" onclick="event.stopPropagation(); restoreGroup(${group.id})" aria-label="Restore all ${group.tabs.length} tabs from this group">Restore All</button>
-      <button type="button" data-id="${group.id}" onclick="event.stopPropagation(); deleteGroup(${group.id})" aria-label="Delete this group">Delete</button>
+      <button type="button" class="restore-all-btn" data-id="${group.id}" aria-label="Restore all ${group.tabs.length} tabs from this group">Restore All</button>
+      <button type="button" class="delete-group-btn" data-id="${group.id}" aria-label="Delete this group">Delete</button>
     `;
+
+    summary.querySelector('.restore-all-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      restoreGroup(Number(e.target.dataset.id));
+    });
+
+    summary.querySelector('.delete-group-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      deleteGroup(Number(e.target.dataset.id));
+    });
+
     details.appendChild(summary);
 
     const ul = document.createElement('ul');
