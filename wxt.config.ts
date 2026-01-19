@@ -4,7 +4,7 @@ export default defineConfig({
   manifest: {
     name: "TabDump",
     version: "0.0.2",
-    description: "Saving all open tabs to read later",
+    description: "Dump all your tabs that you'll never read again",
     permissions: ["tabs", "storage", "unlimitedStorage"],
     icons: {
       16: "/icons/icon16.png",
@@ -12,7 +12,7 @@ export default defineConfig({
       128: "/icons/icon128.png",
     },
     action: {
-      default_title: "Saving all open tabs to read later",
+      default_title: "Dump all your tabs that you'll never read again",
       default_icon: {
         16: "/icons/icon16.png",
         48: "/icons/icon48.png",

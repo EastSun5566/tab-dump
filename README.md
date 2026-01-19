@@ -1,6 +1,6 @@
 # TabDump
 
-A minimal Chrome/Firefox extension for saving all open tabs to read later.
+> 🥟 Dump all your tabs that you'll never read again
 
 ## Features
 
