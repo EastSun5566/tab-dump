@@ -7,7 +7,7 @@
 - **One-click save**: Save all open tabs to a single page
 - **Export/Import**: Backup and restore your tabs as JSON
 - **Cross-browser**: Works on Chrome, Firefox, Edge, Safari
-- **No dependencies**: Total size < 1.1 MB (including icons)
+- **No dependencies**: Total size < 50 kB (including icons)
 
 ## Installation
 
@@ -58,7 +58,6 @@ pnpm zip:firefox      # Firefox AMO (includes source code)
 ## Usage
 
 - Click the extension icon to save all tabs
-- Click a tab link to open it (removes from list)
+- Click a tab link to open it
 - Click "Restore All" to reopen all tabs in a group
 - Click "Delete" to remove a group
-- Use "Export" to backup, "Import" to restore

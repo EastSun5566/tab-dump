@@ -126,6 +126,12 @@
         font-weight: bold;
         color: var(--cdark);
         user-select: none;
+        display: flex;
+        align-items: center;
+      }
+      
+      summary .title-text {
+        flex: 1;
       }
       
       details ul {
@@ -188,10 +194,27 @@
       
       nav {
         margin-bottom: 1em;
+        display: flex;
+        align-items: center;
       }
       
       nav button {
         margin: 0 .5em 0 0;
+      }
+      
+      nav .spacer {
+        flex: 1;
+      }
+      
+      nav .view-toggle {
+        background: transparent;
+        border-color: var(--cmed);
+        color: var(--cdark);
+      }
+      
+      nav .view-toggle.active {
+        border-color: var(--clink);
+        color: var(--clink);
       }
       
       input[type="file"] {
@@ -209,9 +232,12 @@
     <h1>🥟 Tabs</h1>
     
     <nav aria-label="Tab management actions">
-      <button id="exportBtn" type="button" aria-label="Export all tabs as JSON">Export</button>
-      <button id="importBtn" type="button" aria-label="Import tabs from JSON file">Import</button>
-      <input type="file" id="fileInput" accept=".json" aria-label="Select JSON file to import">
+      <button id="timelineBtn" type="button" class="view-toggle active">Timeline</button>
+      <button id="groupedBtn" type="button" class="view-toggle">Grouped</button>
+      <span class="spacer"></span>
+      <button id="exportBtn" type="button">Export</button>
+      <button id="importBtn" type="button">Import</button>
+      <input type="file" id="fileInput" accept=".json">
     </nav>
     
     <main id="container" role="main" aria-live="polite"></main>
