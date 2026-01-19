@@ -6,6 +6,12 @@ Thumbs.db
 .vscode/
 .idea/
 
+# WXT
+.output/
+.wxt/
+node_modules/
+*.tsbuildinfo
+
 # Build artifacts
 dist/
 *.zip
