@@ -18,5 +18,15 @@ export default defineConfig({
         48: "/icons/icon48.png",
       },
     },
+    browser_specific_settings: {
+      gecko: {
+        id: "tabdump@eastsun.me",
+        strict_min_version: "109.0",
+        // @ts-expect-error
+        data_collection_permissions: {
+          required: ["none"],
+        },
+      },
+    },
   },
 });
