@@ -4,20 +4,21 @@
 
 ## Features
 
-- **One-click save**: Save all open tabs to a single page
-- **Export/Import**: Backup and restore your tabs as JSON
-- **Cross-browser**: Works on Chrome, Firefox, Edge, Safari
-- **No dependencies**: Total size < 50 kB (including icons)
+- One-click save and close all tabs in the current window
+- Automatic grouping by time or keywords
+- Click any link to reopen tabs
+- Restore entire groups with one click
+- Export/Import backups
 
 ## Installation
 
 ### Chrome Web Store
 
-Coming soon!
+> Coming soon!
 
 ### Firefox Add-ons
 
-Coming soon!
+> Coming soon!
 
 ### Manual Installation
 
@@ -39,7 +40,6 @@ Coming soon!
 ## Development
 
 ```bash
-# Install dependencies
 pnpm install
 
 # Development mode
@@ -54,10 +54,3 @@ pnpm build:firefox    # Firefox
 pnpm zip              # Chrome Web Store
 pnpm zip:firefox      # Firefox AMO (includes source code)
 ```
-
-## Usage
-
-- Click the extension icon to save all tabs
-- Click a tab link to open it
-- Click "Restore All" to reopen all tabs in a group
-- Click "Delete" to remove a group
