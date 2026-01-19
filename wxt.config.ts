@@ -5,7 +5,7 @@ export default defineConfig({
     name: "TabDump",
     version: "0.0.2",
     description: "Saving all open tabs to read later",
-    permissions: ["tabs", "storage", "unlimitedStorage", "favicon"],
+    permissions: ["tabs", "storage", "unlimitedStorage"],
     icons: {
       16: "/icons/icon16.png",
       48: "/icons/icon48.png",

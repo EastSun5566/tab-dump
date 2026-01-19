@@ -1,5 +1,7 @@
 export default defineBackground(() => {
-  browser.action.onClicked.addListener(async (currentTab) => {
+  // Use browserAction for MV2 (Firefox) or action for MV3 (Chrome)
+  const actionApi = browser.action || browser.browserAction;  
+  actionApi.onClicked.addListener(async (currentTab) => {
     if (currentTab.incognito) return;
 
     const tabs = await browser.tabs.query({ currentWindow: true, pinned: false });
@@ -14,7 +16,7 @@ export default defineBackground(() => {
       tabs: tabsToSave.map((t) => ({ title: t.title, url: t.url, favIconUrl: t.favIconUrl })),
     };
 
-    const result = await browser.storage.local.get({ tabGroups: [] });
+    const result = await browser.storage.local.get({ tabGroups: [] }) as { tabGroups: Array<typeof newGroup> };
     await browser.storage.local.set({ tabGroups: [newGroup, ...result.tabGroups] });
 
     await browser.tabs.create({ url: browser.runtime.getURL("/manager.html") });
