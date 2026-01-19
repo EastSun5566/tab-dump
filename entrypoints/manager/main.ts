@@ -43,7 +43,7 @@ async function render(): Promise<void> {
   const { tabGroups: groups } = await browser.storage.local.get({ tabGroups: [] }) as { tabGroups: TabGroup[] };
   
   if (groups.length === 0) {
-    container.innerHTML = '<p class="empty">No tabs have been dumped yet.</p>';
+    container.innerHTML = '<p class="empty">🧹</p>';
     return;
   }
 
