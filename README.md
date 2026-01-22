@@ -14,11 +14,11 @@
 
 ### Chrome Web Store
 
-> Coming soon!
+<https://chromewebstore.google.com/detail/ojkcnaiakclmkagelihjlcalnndicplk>
 
 ### Firefox Add-ons
 
-> Coming soon!
+<https://addons.mozilla.org/addon/tabdump/>
 
 ### Manual Installation
 
